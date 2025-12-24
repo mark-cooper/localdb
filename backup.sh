@@ -12,6 +12,7 @@ VOLUMES=(
   mysql-data
   pg-data
   pgadmin-data
+  redis-data
 )
 
 mkdir -p "$BACKUP_DIR"

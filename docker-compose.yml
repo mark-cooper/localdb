@@ -77,6 +77,14 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin/
 
+  redis:
+    image: redis:7
+    ports:
+      - "${REDIS_PORT}:6379"
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - redis-data:/data
+
 volumes:
   cb-data:
   ch-data:
@@ -85,3 +93,4 @@ volumes:
   mysql-data:
   pg-data:
   pgadmin-data:
+  redis-data:

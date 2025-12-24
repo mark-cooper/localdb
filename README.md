@@ -48,6 +48,14 @@ docker compose down pgadmin # pgadmin only
 - See the `.env` file for the default values
 - Create `.env.local` to supply custom configuration
 
+## Commands
+
+Redis:
+
+```bash
+docker compose exec redis redis-cli -c 'PING'
+```
+
 ## Data
 
 Docker volumes are used to store data, therefore stopping and removing

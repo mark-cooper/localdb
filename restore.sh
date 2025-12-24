@@ -17,6 +17,7 @@ VOLUMES=(
   mysql-data
   pg-data
   pgadmin-data
+  redis-data
 )
 
 if [ ! -d "$BACKUP_DIR" ]; then
