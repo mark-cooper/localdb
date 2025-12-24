@@ -11,6 +11,8 @@ BACKUP_DIR=./backups/$1
 
 VOLUMES=(
   cb-data
+  ch-data
+  ch-logs
   ddb-data
   mysql-data
   pg-data

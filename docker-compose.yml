@@ -2,12 +2,31 @@
 services:
   cb:
     image: dbeaver/cloudbeaver:latest
-    depends_on:
-      - mysql
     ports:
       - "${CB_PORT}:8978"
     volumes:
       - cb-data:/opt/cloudbeaver/workspace
+
+  ch:
+    image: clickhouse/clickhouse-server:latest
+    ports:
+      - ${CH_HTTP_PORT}:8123
+      - ${CH_TCP_PORT}:9000
+    env_file:
+      - path: .env
+      - path: .env.local
+        required: false
+    volumes:
+      - ch-data:/var/lib/clickhouse/
+      - ch-logs:/var/log/clickhouse-server/
+    cap_add:
+      - IPC_LOCK
+      - NET_ADMIN
+      - SYS_NICE
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
 
   ddb:
     image: amazon/dynamodb-local
@@ -60,6 +79,8 @@ services:
 
 volumes:
   cb-data:
+  ch-data:
+  ch-logs:
   ddb-data:
   mysql-data:
   pg-data:

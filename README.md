@@ -3,6 +3,7 @@
 Run various databases and admin UIs using Docker with the provided
 compose file:
 
+- ClickHouse
 - CloudBeaver
 - Dynamo DB (local)
 - ElasticSearch (todo)
@@ -49,28 +50,14 @@ docker compose down pgadmin # pgadmin only
 
 ## Data
 
-These volumes are used to store data:
-
-- cb-data
-- ddb-data
-- es-data (todo)
-- mysql-data
-- pg-data
-- pgadmin-data
-- solr-data (todo)
-
-This way stopping and removing containers is not destructive. Running
-the containers again will resume with data persisted. Take down the
-containers and blow away the volumes to start over.
+Docker volumes are used to store data, therefore stopping and removing
+containers is not destructive. Running the containers again will resume
+the with data persisted. Take down the containers and blow away the volumes
+to start over:
 
 ```bash
 docker compose down
-docker volume rm \
-    cb-data \
-    ddb-data \
-    mysql-data \
-    pg-data \
-    pgadmin-data
+docker volume rm pg-data # etc.
 ```
 
 ## Backup and restore volumes

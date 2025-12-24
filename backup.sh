@@ -6,6 +6,8 @@ BACKUP_DIR=./backups/$TS
 
 VOLUMES=(
   cb-data
+  ch-data
+  ch-logs
   ddb-data
   mysql-data
   pg-data
