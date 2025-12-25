@@ -19,10 +19,6 @@ services:
     volumes:
       - ch-data:/var/lib/clickhouse/
       - ch-logs:/var/log/clickhouse-server/
-    cap_add:
-      - IPC_LOCK
-      - NET_ADMIN
-      - SYS_NICE
     ulimits:
       nofile:
         soft: 262144
@@ -84,6 +80,10 @@ services:
     command: redis-server --save 20 1 --loglevel warning
     volumes:
       - redis-data:/data
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
 
 volumes:
   cb-data:
